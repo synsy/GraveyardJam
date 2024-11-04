@@ -1,0 +1,6 @@
+.names {
+    font-size: 89px;
+    -unity-font: url("project://database/Assets/Graphics/PixgamerRegular-OVD6A.ttf?fileID=12800000&guid=bfbe25854e364d64e8c6ec4cfd0072ae&type=3#PixgamerRegular-OVD6A");
+    -unity-font-style: normal;
+    -unity-font-definition: initial;
+}
