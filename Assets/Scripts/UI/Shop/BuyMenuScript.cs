@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class BuyMenuScript : MonoBehaviour
 {
+    private static BuyMenuScript instance;
     public Button exit, sell, sellAll;
     public InventoryManager inventoryManager;
     public Item[] shopItems; // Array to store shop item
@@ -23,7 +24,6 @@ public class BuyMenuScript : MonoBehaviour
 
     private void Start()
     {
-        
 
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -38,7 +38,16 @@ public class BuyMenuScript : MonoBehaviour
 
     private void Awake()
     {
-
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // Keep SceneManager between scenes
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+       
 
         gameObject.SetActive(true);
         document = GetComponent<UIDocument>();

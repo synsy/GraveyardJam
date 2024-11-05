@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerIUiOpener : MonoBehaviour
 {
     public GameObject shop;
-    public GameObject BJ;
+    public GameObject BJ, computer;
     public bool lobby;
     public bool hasExited;
     private void Awake()
     {
-        
+       
         lobby = true;
         shop = GameObject.FindWithTag("BuyMenu");
         shop.SetActive(false);
@@ -22,18 +22,21 @@ public class PlayerIUiOpener : MonoBehaviour
             other.transform.GetChild(1).gameObject.SetActive(true);
             if (Input.GetKey(KeyCode.E))
             {
-                if(shop.activeSelf == false)
-                    ToggleShop(true);
-                    
+                if (shop.activeSelf == false)
+                    ToggleComputer(true);
+                Player.instance.canMove = false;
+
             }
         }
         if (other.CompareTag("BJ"))
         {
+           
             other.transform.GetChild(1).gameObject.SetActive(true);
             if (Input.GetKey(KeyCode.E))
             {
-                if (shop.activeSelf == false)
-                    ToggleBJ(true);
+                
+
+                
 
             }
         }
@@ -77,15 +80,15 @@ public class PlayerIUiOpener : MonoBehaviour
 
     private void OnTriggerExit2D (Collider2D other)
     {
-        if (other.CompareTag("Shop"))
+        /*if (other.CompareTag("Shop"))
         {
             other.transform.GetChild(1).gameObject.SetActive(false);
-            ToggleShop(false);
-        }
+            ToggleComputer(false);
+        }*/
         if (other.CompareTag("BJ"))
         {
             other.transform.GetChild(1).gameObject.SetActive(false);
-            ToggleBJ(false);
+
         }
 
         if (other.CompareTag("Bed"))
@@ -104,12 +107,14 @@ public class PlayerIUiOpener : MonoBehaviour
         }
     }
 
-    void ToggleShop(bool toggle)
+   
+    void ToggleComputer(bool toggle)
     {
-        shop.SetActive(toggle);
-    }
-    void ToggleBJ(bool toggle)
-    {
-        BJ.SetActive(toggle);
+        if (BJ != null && computer != null && shop != null)
+        {
+            computer.SetActive(toggle);
+            shop.SetActive(toggle);
+        }
+       
     }
 }

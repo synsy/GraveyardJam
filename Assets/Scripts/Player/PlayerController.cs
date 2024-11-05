@@ -55,7 +55,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+       
+            MovePlayer();
+     
+        
     }
 
     public void SetMovementDirection(Vector2 direction)

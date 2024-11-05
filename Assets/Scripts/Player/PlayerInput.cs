@@ -34,9 +34,13 @@ public class PlayerInput : MonoBehaviour
     {
         if(Player.instance.canMove)
         {
-            HandleMovementInput();
-            HandleAttackInput();
-            HandleUseInput();
+            if (Player.instance.canMove == true)
+            {
+                 HandleMovementInput();
+                HandleAttackInput();
+                HandleUseInput();
+            }
+           
         }
         Item item = InventoryManager.Instance.GetSelectedItem(false);
         if (item != null)

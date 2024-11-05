@@ -106,4 +106,8 @@ public class Player : MonoBehaviour
         healthText.gameObject.SetActive(true);
 
     }
+    public void CanMoveToggle(bool toggle)
+    {
+        canMove = toggle;
+    }
 }

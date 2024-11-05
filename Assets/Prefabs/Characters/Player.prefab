@@ -523,6 +523,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &8701261704583695555
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -881,6 +882,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &8728553643769489004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -982,6 +984,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &2641973943463463100
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1083,6 +1086,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &1182605327349541300
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1184,6 +1188,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &1522570598310227129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1369,6 +1374,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &6513076249622898734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1470,6 +1476,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &3150365966260298678
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1655,6 +1662,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &6751056740276120198
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1707,83 +1715,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &4772773976633204411
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3421251600814287977}
-  - component: {fileID: 8195587707605261715}
-  - component: {fileID: 8038694532228145514}
-  m_Layer: 5
-  m_Name: BuyMenu
-  m_TagString: BuyMenu
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3421251600814287977
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4772773976633204411}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 1.84, z: 0}
-  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9017517631395000687}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8195587707605261715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4772773976633204411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: d44c5aec74cbbd24e819f1ffe620253a, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 0f90289721c10ff428f97bdad84640d1, type: 3}
-  m_SortingOrder: 0
---- !u!114 &8038694532228145514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4772773976633204411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4883a53272bc0f48897522c5591b9c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
-  shopItems:
-  - {fileID: 11400000, guid: 0bce2dee7ed9a4ad39b43579f1819504, type: 2}
-  - {fileID: 11400000, guid: 21bc985e6d50443a5bed6d0f076769c5, type: 2}
-  - {fileID: 11400000, guid: 91103e63cc0614758bf91874459c9d31, type: 2}
-  - {fileID: 11400000, guid: 369f9cbac0c9c473cbf11cd24eb2b600, type: 2}
-  - {fileID: 11400000, guid: b313811c440804ebbbd977d19417b677, type: 2}
-  - {fileID: 11400000, guid: 40f3fcdf4d7ae433d8ff29b6c96bc438, type: 2}
-  - {fileID: 11400000, guid: bbe6b3320ab7f4d3086a35fab9f12204, type: 2}
-  - {fileID: 11400000, guid: 4b84a13dbbbe94b359458905a2d988fe, type: 2}
-  - {fileID: 11400000, guid: 637db966065a145fdaa1dc8cd702b9d2, type: 2}
-  - {fileID: 11400000, guid: 280e04487427e4cd3baa5bc6eceab10f, type: 2}
-  - {fileID: 11400000, guid: 1dbf2c01dddbf4468901ba5b81cdef3e, type: 2}
-  - {fileID: 11400000, guid: 4ad30d190bd524cc682ad3887977511b, type: 2}
-  bankBalanceScript: {fileID: 0}
-  money: 0
 --- !u!1 &4941847721014487688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1848,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &4362728738153284948
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2102,6 +2034,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &5173854242633703158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2287,6 +2220,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &8418980836475144888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3061,7 +2995,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3753718476238684666}
-  - {fileID: 3421251600814287977}
   - {fileID: 8168072831578190726}
   - {fileID: 1538895635860770924}
   - {fileID: 7850385726049921650}
@@ -3133,7 +3066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   toolPosition: {fileID: 2014798835397190658}
-  shop: {fileID: 4772773976633204411}
+  shop: {fileID: 0}
   audioManager: {fileID: 656075509017116679}
 --- !u!114 &1071116169723437946
 MonoBehaviour:
@@ -3149,6 +3082,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   toolPosition: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  gunTool: {fileID: 0}
 --- !u!114 &1191940585124545954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3174,6 +3109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+  invunrable: 0
   healthText: {fileID: 0}
 --- !u!50 &8016010329484446716
 Rigidbody2D:
@@ -3296,6 +3232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 0}
+  BJ: {fileID: 0}
+  computer: {fileID: 0}
   lobby: 0
   hasExited: 0
 --- !u!1 &8107148277250859806
@@ -3475,6 +3413,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &7927791313689219033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3576,6 +3515,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &4694620944455854747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3761,6 +3701,7 @@ MonoBehaviour:
   targetAngle: 90
   rotationSpeed: 400
   attackCollider: {fileID: 1352070334493173139}
+  facingLeft: 0
 --- !u!212 &5765169230579675599
 SpriteRenderer:
   m_ObjectHideFlags: 0
