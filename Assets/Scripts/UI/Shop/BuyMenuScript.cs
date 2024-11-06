@@ -14,6 +14,7 @@ public class BuyMenuScript : MonoBehaviour
 
     private Button[] buttons; // Array to store button references
     private UIDocument document;
+    public BlackJackManager blackJackManager;
     bool[] owned;
     public BankBalanceScript bankBalanceScript;
     public int money;
@@ -30,8 +31,8 @@ public class BuyMenuScript : MonoBehaviour
             Sprite sprite = Resources.Load<Sprite>("GreenButton");
             buttons[i].style.backgroundImage = new StyleBackground(sprite.texture);
         }
-        money = 10000;
-        bankBalanceScript.UpdateBank(money);
+        
+       
 
 
     }
@@ -55,6 +56,7 @@ public class BuyMenuScript : MonoBehaviour
         // Initialize the button array with 12 elements
         buttons = new Button[12];
         owned = new bool[12];
+        
 
 
 
@@ -62,8 +64,16 @@ public class BuyMenuScript : MonoBehaviour
 
     }
 
+    private void UpdateMoneyText()
+    {
+        blackJackManager.RefreshMoney();
+    }
     private void OnEnable()
     {
+        UpdateMoneyText();
+      
+            
+
         if (shopReset == true)
         {
             ResetShop();
@@ -132,12 +142,12 @@ public class BuyMenuScript : MonoBehaviour
 
 
                     owned[id] = true;
-                    bankBalanceScript.UpdateBank(money);
+                    UpdateMoneyText();
                 }
                 else if (addedSuccesfully)
                 {
                     money -= itemToBuy.cost;
-                    bankBalanceScript.UpdateBank(money);
+                    UpdateMoneyText();
 
                 }
             }
@@ -169,14 +179,14 @@ public class BuyMenuScript : MonoBehaviour
                 buttons[itemId].style.backgroundImage = new StyleBackground(sprite.texture);
 
 
-                bankBalanceScript.UpdateBank(money);
+                UpdateMoneyText();
 
             }
             else
             {
                 money += itemToSell.value;
 
-                bankBalanceScript.UpdateBank(money);
+                UpdateMoneyText();
             }
 
         }
@@ -200,7 +210,7 @@ public class BuyMenuScript : MonoBehaviour
     public void SellLootItem(Item item)
     {
         money += item.value;
-        bankBalanceScript.UpdateBank(money);
+        UpdateMoneyText();
     }
     public void ResetShop()
     {

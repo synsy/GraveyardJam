@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 public class MapGenerator : MonoBehaviour
 {
     public Tilemap tilemap;
-    public Tile hay, stones, torch, tree;
+    public Tile hay, stones, torch, tree, pole, fence, bone;
     public Tile[] roads;
 
   
@@ -22,6 +22,7 @@ public class MapGenerator : MonoBehaviour
 
     public GameObject graveYard;
     public GameObject church;
+    public GameObject torchLight;
 
     public Transform graveManager;
     public GraveManager graveManagerScript;
@@ -31,11 +32,16 @@ public class MapGenerator : MonoBehaviour
     {
 
         PlaceChurchAndRoads();
+        PlaceRandomRoads();
         PlaceGraveYards();
         PlaceTile(hay, 2, 5);
-        PlaceTile(stones, 6, 10);
+        PlaceTile(stones, 10, 15);
         PlaceTile(torch, 3, 5);
-        PlaceTile(tree, 5, 7);
+        PlaceTile(tree, 10, 14);
+        PlaceTile(pole, 3, 5);
+        PlaceTile(fence, 2, 5);
+        PlaceTile(bone, 7, 9);
+       
 
     }
 
@@ -65,7 +71,7 @@ public class MapGenerator : MonoBehaviour
         GameObject newChurch = Instantiate(church, adjustPos, Quaternion.identity);
        
 
-        //placing roads
+        //placing roads to church
         int startPosx = 4;
         int startPosy = -9;
         newPos = new Vector3Int(startPosx, startPosy, 0);
@@ -133,11 +139,61 @@ public class MapGenerator : MonoBehaviour
             startPosx += 1;
 
         }
-        
+
+        //placing random roads
+        int randomAmountRoads = Random.Range(4, 10);
+        int randomDirection = Random.Range(-1, 1);
+        for (int i = 0; i <= randomAmountRoads; i++)
+        {
+            if (randomDirection < 0)
+            {
+                startPosx++;
+            }
+            else
+            {
+                startPosx--;
+            }
+
+            newPos = new Vector3Int(startPosx, startPosy, 0);
+            randomRoad = Random.Range(0, roads.Length);
+            tilemap.SetTile(newPos, roads[randomRoad]);
+            placedTilePositions.Add(newPos);
+
+            if (startPosx < -4 || startPosx > 13)
+            {
+                break;
+            }
+
+            
+        }
+        randomAmountRoads = Random.Range(5, 15);
+        for (int i = 0; i <= randomAmountRoads; i++)
+        {
+            if (randomDirection < 0)
+            {
+                startPosy++;
+            }
+
+            newPos = new Vector3Int(startPosx, startPosy, 0);
+            randomRoad = Random.Range(0, roads.Length);
+            tilemap.SetTile(newPos, roads[randomRoad]);
+            placedTilePositions.Add(newPos);
+
+            if (startPosy < -7 || startPosy > 13)
+            {
+                break;
+            }
+
+            
+        }
 
 
 
+    }
 
+    void PlaceRandomRoads()
+    {
+       
     }
     void PlaceGraveYards()
     {
@@ -176,12 +232,12 @@ public class MapGenerator : MonoBehaviour
             {
                 GameObject newGraveYard = Instantiate(graveYard, newPos, Quaternion.identity);
                 newGraveYard.transform.SetParent(graveManager);
-                graveManagerScript.SetAsChild();
                 placedGraveYards.Add(newPos);
             }
            
 
         }
+        graveManagerScript.SetAsChild();
     }
     void PlaceTile(Tile tile, int range1, int range2)
     {
@@ -231,6 +287,12 @@ public class MapGenerator : MonoBehaviour
                 {
                     tilemap.SetTile(newPos, tile);
                     placedTilePositions.Add(newPos);
+                    if (tile == torch)
+                    {
+                    Vector3 adjustedPos = new Vector3(newPos.x + 0.4f, newPos.y + 0.8f, 0);
+                        Instantiate(torchLight, adjustedPos, Quaternion.identity);
+                    }
+
                 }
                
             

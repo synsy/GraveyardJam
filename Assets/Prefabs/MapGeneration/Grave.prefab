@@ -159,7 +159,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: -345796794, guid: f58dceb5adbee9847a020ec579542f58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -201,6 +201,8 @@ MonoBehaviour:
   graveState: 1
   graveLootTier: 0
   openGrave: {fileID: 6177450114188511764}
+  audioManager: {fileID: 0}
+  audioScript: {fileID: 0}
 --- !u!61 &8950689641915219596
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -51,9 +51,12 @@ public class GraveManager : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            if (child.CompareTag("Grave"))
+            foreach (Transform grandchild in child)
             {
-                graves.Add(child.GetComponent<Grave>());
+                if (grandchild.CompareTag("Grave"))
+                {
+                    graves.Add(grandchild.GetComponent<Grave>());
+                }
             }
         }
     }
