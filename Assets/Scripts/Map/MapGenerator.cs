@@ -8,8 +8,9 @@ using UnityEngine.Tilemaps;
 public class MapGenerator : MonoBehaviour
 {
     public Tilemap tilemap;
-    public Tile hay, stones, torch, tree, pole, fence, bone;
+    public Tile hay, stones, torch, tree, pole, fence;
     public Tile[] roads;
+    public Tile[] bones;
 
   
     public float timer;
@@ -23,24 +24,25 @@ public class MapGenerator : MonoBehaviour
     public GameObject graveYard;
     public GameObject church;
     public GameObject torchLight;
+    public GameObject[] darkGrass;
 
     public Transform graveManager;
     public GraveManager graveManagerScript;
     public List<Vector3Int> placedGraveYards = new List<Vector3Int>();
+    public List<Vector3Int> placedDarkGrass = new List<Vector3Int>();
     // Start is called before the first frame update
     void Start()
     {
-
+        PlaceDarkGrass();
         PlaceChurchAndRoads();
-        PlaceRandomRoads();
         PlaceGraveYards();
-        PlaceTile(hay, 2, 5);
+        PlaceTile(hay, 5, 8);
         PlaceTile(stones, 10, 15);
-        PlaceTile(torch, 3, 5);
+        PlaceTile(torch, 8, 15);
         PlaceTile(tree, 10, 14);
         PlaceTile(pole, 3, 5);
         PlaceTile(fence, 2, 5);
-        PlaceTile(bone, 7, 9);
+        PlaceBones();
        
 
     }
@@ -52,6 +54,62 @@ public class MapGenerator : MonoBehaviour
        
     }
 
+    void PlaceDarkGrass()
+    {
+        int randomAmount = Random.Range(6, 10);
+        for (int i = 0; i <= randomAmount; i++)
+        {
+            minDistance = 8f;
+            int attempts = 0;
+            bool validPos = false;
+            while (validPos != true && attempts < 100)
+            {
+
+                int randomx = Random.Range(-4, 13);
+                int randomy = Random.Range(-2, 14);
+                newPos = new Vector3Int(randomx, randomy, 0);
+                validPos = true;
+
+                foreach (Vector3Int pos in placedDarkGrass)
+                {
+                    if (Vector3Int.Distance(newPos, pos) < minDistance)
+                    {
+
+                        validPos = false;
+                        break;
+                    }
+                }
+
+                attempts++;
+
+            }
+          
+            if (validPos)
+            {
+                int randomGrass = Random.Range(0, darkGrass.Length);
+                GameObject grass = darkGrass[randomGrass];
+                Instantiate(grass, newPos, Quaternion.identity);
+                placedDarkGrass.Add(newPos);
+            }
+
+
+                
+        }
+        
+
+    }
+    void PlaceBones()
+    {
+        
+        int randomAmount = Random.Range(8, 15);
+        for (int i = 0; i <= randomAmount; i++)
+        {
+            int randomBone = Random.Range(0, bones.Length);
+            Tile bone = bones[randomBone];
+            PlaceTile(bone, 1, 2);
+        }
+        
+    }
     void PlaceChurchAndRoads()
     {
         
@@ -140,60 +198,71 @@ public class MapGenerator : MonoBehaviour
 
         }
 
-        //placing random roads
-        int randomAmountRoads = Random.Range(4, 10);
-        int randomDirection = Random.Range(-1, 1);
-        for (int i = 0; i <= randomAmountRoads; i++)
-        {
-            if (randomDirection < 0)
-            {
-                startPosx++;
-            }
-            else
-            {
-                startPosx--;
-            }
-
-            newPos = new Vector3Int(startPosx, startPosy, 0);
-            randomRoad = Random.Range(0, roads.Length);
-            tilemap.SetTile(newPos, roads[randomRoad]);
-            placedTilePositions.Add(newPos);
-
-            if (startPosx < -4 || startPosx > 13)
-            {
-                break;
-            }
-
-            
-        }
-        randomAmountRoads = Random.Range(5, 15);
-        for (int i = 0; i <= randomAmountRoads; i++)
-        {
-            if (randomDirection < 0)
-            {
-                startPosy++;
-            }
-
-            newPos = new Vector3Int(startPosx, startPosy, 0);
-            randomRoad = Random.Range(0, roads.Length);
-            tilemap.SetTile(newPos, roads[randomRoad]);
-            placedTilePositions.Add(newPos);
-
-            if (startPosy < -7 || startPosy > 13)
-            {
-                break;
-            }
-
-            
-        }
+        PlaceRandomRoads(startPosx, startPosy);
+        
 
 
 
     }
 
-    void PlaceRandomRoads()
+    
+    void PlaceRandomRoads(int startPosx, int startPosy)
     {
-       
+        //placing random roads
+        bool insideWalls = true;
+        while (insideWalls)
+        {
+            int randomRoad;
+            int randomAmountRoads = Random.Range(4, 10);
+            int randomDirection = Random.Range(-1, 1);
+            for (int i = 0; i <= randomAmountRoads; i++)
+            {
+                if (randomDirection < 0)
+                {
+                    startPosx++;
+                }
+                else
+                {
+                    startPosx--;
+                }
+
+                newPos = new Vector3Int(startPosx, startPosy, 0);
+                randomRoad = Random.Range(0, roads.Length);
+                tilemap.SetTile(newPos, roads[randomRoad]);
+                placedTilePositions.Add(newPos);
+
+                if (startPosx < -4 || startPosx > 13)
+                {
+                    insideWalls = false;
+                    break;
+                }
+
+
+            }
+            randomAmountRoads = Random.Range(5, 15);
+            for (int i = 0; i <= randomAmountRoads; i++)
+            {
+
+                startPosy++;
+
+
+                newPos = new Vector3Int(startPosx, startPosy, 0);
+                randomRoad = Random.Range(0, roads.Length);
+                tilemap.SetTile(newPos, roads[randomRoad]);
+                placedTilePositions.Add(newPos);
+
+                if (startPosy < -7 || startPosy > 13)
+                {
+                    insideWalls = false;
+                    break;
+                  
+                }
+
+
+            }
+        }
+        
+
     }
     void PlaceGraveYards()
     {
@@ -282,7 +351,7 @@ public class MapGenerator : MonoBehaviour
 
             }
 
-            print(attempts);
+          
                 if (validTile && validYard)
                 {
                     tilemap.SetTile(newPos, tile);

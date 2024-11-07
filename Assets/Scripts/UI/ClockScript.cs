@@ -9,7 +9,7 @@ public class ClockScript : MonoBehaviour
     private int hours = 0;
     private int minutes = 0;
     public float timer = 0;
-    private float interval = 1f;
+    private float interval = 0.3f;
     public Text clockText;
     public Color color;
     private bool gameEnded;
